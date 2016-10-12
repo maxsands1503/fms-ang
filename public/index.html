@@ -4,66 +4,17 @@
     <meta charset="utf-8">
     <title>Welcome to Firebase Hosting</title>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
-
-  <script src="https://www.gstatic.com/firebasejs/3.4.1/firebase.js"></script>
-
-
+    <script src="https://www.gstatic.com/firebasejs/3.4.1/firebase.js"></script>
     <script src="https://cdn.firebase.com/libs/angularfire/2.0.2/angularfire.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.8/angular-ui-router.min.js"></script>
     <script src="app.js" charset="utf-8"></script>
+    <base href="/" />
   </head>
-  <body>
+  <body ng-app="app">
+    <div ui-view>
 
-  <div ng-app="sampleApp" ng-controller="SampleCtrl">
-    Email: <input type="text" ng-model="email">
-    Password: <input type="password" ng-model="password">
-    Name: <input type="text" ng-model="name" />
-    <br><br>
-
-    <button ng-click="createUser()">Create User</button>
-
-    <br><br>
-
-    <button ng-click="deleteUser()">Delete User</button>
-
-    <p ng-if="message">Message: <strong>{{ message }}</strong></p>
-    <p ng-if="error">Error: <strong>{{ error }}</strong></p>
-    <div ng-show="firebaseUser">
-    <p>Hello, {{ firebaseUser.displayName }}</p>
-    <button ng-click="auth.$signOut()">Sign Out</button>
-  </div>
-
-  </div>
-
-    <!-- <ul id="list">
-
-    </ul>
-    <script type="text/javascript">
-
-      const obj = document.getElementById('object');
-      const dbref = firebase.database().ref().child('obj');
-      dbref.on('value', snap =>{
-        obj.innerText = JSON.stringify(snap.val(), null, 3)
-      }
-    );
-    const ulist = document.getElementById('list');
-    const dbreflist = dbref.child('hobbies');
-    dbreflist.on('child_added', snap => {
-      const li = document.createElement('p');
-      li.innerText = snap.val();
-      li.id = snap.key;
-      ulist.appendChild(li);
-    });
-      dbreflist.on('child_changed', snap => {
-        const liChanged = document.getElementById(snap.key);
-        liChanged.innerText = snap.val();
-      });
-
-
-      dbreflist.on('child_removed', snap => {
-        const liRemoved = document.getElementById(snap.key);
-        liRemoved.remove();
-      });
-    </script> -->
-    <script src="./Controllers/auth.js" charset="utf-8"></script>
+    </div>
+    
+    <a ui-sref="login">Click here</a>
   </body>
 </html>

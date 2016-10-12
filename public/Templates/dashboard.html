@@ -1,0 +1,80 @@
+<div ng-controller="DashCtrl">
+  <h1>Welcome {{data.name}}</h1>
+  <button ng-click="test()">Test</button>
+  <ul ng-repeat="fridge in data.fridges">
+    <li>{{fridge.fridge}}</li>
+  </ul>
+  <form>
+    <label>Create Recipe</label>
+    <input type="text" placeholder="Recipe Name" ng-model="recipeName" />
+    <input type="text" placeholder="Ingredient" ng-model="ingredient" />
+    <input type="text" placeholder="Ingredient" ng-model="ingredient1" />
+    <input type="text" placeholder="Ingredient" ng-model="ingredient2" />
+    <input type="text" placeholder="Ingredient" ng-model="ingredient3" />
+    <input type="text" placeholder="Ingredient" ng-model="ingredient4" />
+    <input type="text" placeholder="Ingredient" ng-model="ingredient5" />
+    <input type="text" placeholder="Ingredient" ng-model="ingredient6" />
+    <input type="text" placeholder="Ingredient" ng-model="ingredient7" />
+    <input type="text" placeholder="Ingredient" ng-model="ingredient8" />
+    <input type="text" placeholder="Ingredient" ng-model="ingredient9" />
+    <input type="text" placeholder="Ingredient" ng-model="ingredient10" />
+    <input type="text" placeholder="Ingredient" ng-model="ingredient11" />
+    <input type="text" placeholder="Ingredient" ng-model="ingredient12" />
+    <input type="text" placeholder="Ingredient" ng-model="ingredient13" />
+    <input type="text" placeholder="Ingredient" ng-model="ingredient14" />
+    <input type="text" placeholder="Ingredient" ng-model="ingredient15" />
+    <input type="text" placeholder="Ingredient" ng-model="ingredient16" />
+    <input type="textarea" placeholder="Description" ng-model="description" />
+    <button ng-click="createRecipe()">Create New Recipe</button>
+  </form>
+  <form>
+     <label>Create Shopping List</label>
+     <input type="text" placeholder="Grocery List Item" ng-model="gName"/>
+     <input type="text" placeholder="Grocery List Item" ng-model="gItem1"/>
+     <input type="text" placeholder="Grocery List Item" ng-model="gItem2"/>
+     <input type="text" placeholder="Grocery List Item" ng-model="gItem3"/>
+     <input type="text" placeholder="Grocery List Item" ng-model="gItem4"/>
+     <input type="text" placeholder="Grocery List Item" ng-model="gItem5"/>
+     <input type="text" placeholder="Grocery List Item" ng-model="gItem6"/>
+     <input type="text" placeholder="Grocery List Item" ng-model="gItem7"/>
+     <input type="text" placeholder="Grocery List Item" ng-model="gItem8"/>
+     <input type="text" placeholder="Grocery List Item" ng-model="gItem9"/>
+     <input type="text" placeholder="Grocery List Item" ng-model="gItem10"/>
+     <input type="text" placeholder="Grocery List Item" ng-model="gItem11"/>
+     <input type="text" placeholder="Grocery List Item" ng-model="gItem12"/>
+     <input type="text" placeholder="Grocery List Item" ng-model="gItem13"/>
+     <input type="text" placeholder="Grocery List Item" ng-model="gItem14"/>
+     <input type="text" placeholder="Grocery List Item" ng-model="gItem15"/>
+     <input type="text" placeholder="Grocery List Item" ng-model="gItem16"/>
+     <input type="text" placeholder="Grocery List Item" ng-model="gItem17"/>
+     <input type="text" placeholder="Grocery List Item" ng-model="gItem18"/>
+     <input type="text" placeholder="Grocery List Item" ng-model="gItem19"/>
+     <input type="text" placeholder="Grocery List Item" ng-model="gItem20"/>
+     <button ng-click="createList()">Create New Shopping List</button>
+  </form>
+  <form>
+     <label>In My Fridge</label>
+     <input type="text" placeholder="Fridge" ng-model="fName"/>
+     <input type="text" placeholder="Fridge Item" ng-model="fItem1"/>
+     <input type="text" placeholder="Fridge Item" ng-model="fItem2"/>
+     <input type="text" placeholder="Fridge Item" ng-model="fItem3"/>
+     <input type="text" placeholder="Fridge Item" ng-model="fItem4"/>
+     <input type="text" placeholder="Fridge Item" ng-model="fItem5"/>
+     <input type="text" placeholder="Fridge Item" ng-model="fItem6"/>
+     <input type="text" placeholder="Fridge Item" ng-model="fItem7"/>
+     <input type="text" placeholder="Fridge Item" ng-model="fItem8"/>
+     <input type="text" placeholder="Fridge Item" ng-model="fItem9"/>
+     <input type="text" placeholder="Fridge Item" ng-model="fItem10"/>
+     <input type="text" placeholder="Fridge Item" ng-model="fItem11"/>
+     <input type="text" placeholder="Fridge Item" ng-model="fItem12"/>
+     <input type="text" placeholder="Fridge Item" ng-model="fItem13"/>
+     <input type="text" placeholder="Fridge Item" ng-model="fItem14"/>
+     <input type="text" placeholder="Fridge Item" ng-model="fItem15"/>
+     <input type="text" placeholder="Fridge Item" ng-model="fItem16"/>
+     <input type="text" placeholder="Fridge Item" ng-model="fItem17"/>
+     <input type="text" placeholder="Fridge Item" ng-model="fItem18"/>
+     <input type="text" placeholder="Fridge Item" ng-model="fItem19"/>
+     <input type="text" placeholder="Fridge Item" ng-model="fItem20"/>
+     <button ng-click="createFridge()">Create New Shopping List</button>
+  </form>
+</div>

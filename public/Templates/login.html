@@ -1,1 +1,29 @@
+<div ng-app="app" ng-controller="AuthCtrl">
+  <button ng-click="showNew()" ng-hide="!returning"> New User Sign Up</button>
+  <button ng-click="showReturning()" ng-hide="!new"> Login for Returning Users</button>
+  <div ng-hide="new">
+    Email: <input type="text" ng-model="email">
+    Password: <input type="password" ng-model="password">
+    Name: <input type="text" ng-model="name" />
+    <br><br>
+    <button ng-click="createUser()">Create User</button>
+    <br><br>
+    <button ng-click="deleteUser()">Delete User</button>
 
+    <p ng-if="message">Message: <strong>{{ message }}</strong></p>
+    <p ng-if="error">Error: <strong>{{ error }}</strong></p>
+  </div>
+
+  <div ng-show="firebaseUser">
+    <p>Hello, {{ firebaseUser.displayName }}</p>
+    <button ng-click="auth.$signOut()">Sign Out</button>
+  </div>
+
+  <div ng-hide="returning">
+    Email: <input type="text" ng-model="email">
+    Password: <input type="password" ng-model="password">
+    <button ng-click="signIn()">Sign In</button>
+      <p ng-if="firebaseUser">Signed in user: <strong>{{ firebaseUser.uid }}</strong></p>
+      <p ng-if="error">Error: <strong>{{ error }}</strong></p>
+  </div>
+</div>
