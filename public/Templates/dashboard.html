@@ -19,7 +19,7 @@
             <button ng-click="fuck=!fuck">Edit</button>
             <div ng-show="fuck">
               <input type="text" ng-model="editIng" placeholder={{ing}} class="putty"/>
-              <button ng-click="editIngredient(recipe.name, ing, editIng); musa = null">Confirm</button>
+              <button ng-click="editIngredient(recipe.name, ing, editIng); editIng = null; fuck=!fuck">Confirm</button>
             </div>
           </ul>
           <hr />
