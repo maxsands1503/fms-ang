@@ -9,20 +9,26 @@
       <h3>Recipes</h3>
       <div id="userRecipe">
         <div ng-repeat="recipe in recipes">
-          <h3>{{recipe.name}}</h3>
+          <h4>{{recipe.name}}</h4><button ng-click="removeRec(recipe.name)">Delete Recipe</button>
+          <h5>Ingredients</h5>
           <ul ng-repeat="ing in recipe.ingredients track by $index">
             <li ng-if="ing" id="$index">
-              {{ing}} <button ng-click="showEditIngredient=!showEditIngredient">Edit</button>
+              {{ing}}
+              <button ng-click="removeIng(recipe.name, ing)">Remove</button>
             </li>
-
-            <div  ng-show="showEditIngredient" >
+            <button ng-click="fuck=!fuck">Edit</button>
+            <div ng-show="fuck">
               <input type="text" ng-model="editIng" placeholder={{ing}}/>
-              <button ng-click="editIngredient(recipe.name, ing, editIng); showEditIngredient=!showEditIngredient">Confirm</button>
+              <button ng-click="editIngredient(recipe.name, ing, editIng); musa = null">Confirm</button>
             </div>
-          </ul>
-          <p>
+            <h5>Instructions</h5>
             {{recipe.description}}
-          </p>
+          </ul>
+          <button ng-click="showEdit=!showEdit">Edit Instructions</button>
+          <div ng-show="showEdit">
+            <textarea id="textarea" ng-model="newD" rows="150" columns="60"></textarea>
+            <button ng-click="descriptor(recipe.name, newD)">Submit Edits</button>
+          </div>
           <button ng-click="showNewIng=!showNewIng">Add Ingredient</button>
           <div ng-show="showNewIng">
             <input type="text" ng-model="newIng" placeholder="new ingredient" />
@@ -35,9 +41,9 @@
       <h3>Grocery Lists</h3>
       <div ng-repeat="gList in gLists">
         <h5>{{gList.name}}</h5>
-
+        <button ng-click="removeList(gList.name)">Delete List</button>
         <ul ng-repeat="list in gList.listItems track by $index">
-          <li ng-if="list">{{list}}</li>
+          <li ng-if="list">{{list}}</li><button ng-click="removeItem(gList.name, list)">Remove</button>
         </ul>
         <button ng-click="addListItem=!addListItem">Add to List</button>
         <div ng-show="addListItem">
@@ -51,9 +57,9 @@
       <div class="col s12 l6 m6 card" id="userFrid">
         <h3>Fridge</h3>
         <div ng-repeat="fridge in fridges">
-          <h5>{{fridge.name}}</h5>
+          <h5>{{fridge.name}}</h5><button ng-click="removeFri(fridge.name)">Delete Fridge</button>
           <ul ng-repeat="item in fridge.inventory track by $index">
-            <li ng-if="item">{{item}}</li>
+            <li ng-if="item">{{item}}</li><button ng-click="removeInv(fridge.name, item)">Remove</button>
           </ul>
           <button ng-click="showAddIn=!showAddIn">Add to Fridge</button>
           <div ng-show="showAddIn">
@@ -98,7 +104,7 @@
         <form>
           <label>Create Recipe</label>
           <input type="text" placeholder="Recipe Name" ng-model="recipeName" />
-          <input type="textarea" placeholder="Boil water and add pasta." ng-model="description" id="textarea"/>
+          <textarea placeholder="Boil water and add pasta." ng-model="description" id="textarea" rows="100" cols="60"></textarea>
           <input type="text" placeholder="Ingredient" ng-model="ingredient" />
           <button ng-click="createRecipe(); recipeName = null; description = null; ingredient = null">Create New Recipe</button>
         </form>

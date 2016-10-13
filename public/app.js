@@ -114,81 +114,6 @@ app.controller("AuthCtrl", ["$scope", "Auth", "$rootScope", '$state',
 ]);
 app.controller("DashCtrl", function($scope, $firebaseObject, $firebaseArray, $firebaseAuth, $http, $firebase) {
     $scope.gItem1 = '';
-    // $scope.gItem2 = '';
-    // $scope.gItem3 = '';
-    // $scope.gItem4 = '';
-    // $scope.gItem5 = '';
-    // $scope.gItem6 = '';
-    // $scope.gItem7 = '';
-    // $scope.gItem8 = '';
-    // $scope.gItem9 = '';
-    // $scope.gItem10 = '';
-    // $scope.gItem11 = '';
-    // $scope.gItem12 = '';
-    // $scope.gItem13 = '';
-    // $scope.gItem14 = '';
-    // $scope.gItem15 = '';
-    // $scope.gItem16 = '';
-    // $scope.gItem17 = '';
-    // $scope.gItem18 = '';
-    // $scope.gItem19 = '';
-    // $scope.gItem20 = '';
-    // $scope.ingredient = '';
-
-
-
-
-    // $scope.fItem1 = '';
-    // $scope.fItem2 = '';
-    // $scope.fItem3 = '';
-    // $scope.fItem4 = '';
-    // $scope.fItem5 = '';
-    // $scope.fItem6 = '';
-    // $scope.fItem7 = '';
-    // $scope.fItem8 = '';
-    // $scope.fItem9 = '';
-    // $scope.fItem10 = '';
-    // $scope.fItem11 = '';
-    // $scope.fItem12 = '';
-    // $scope.fItem13 = '';
-    // $scope.fItem14 = '';
-    // $scope.fItem15 = '';
-    // $scope.fItem16 = '';
-    // $scope.fItem17 = '';
-    // $scope.fItem18 = '';
-    // $scope.fItem19 = '';
-    // $scope.fItem20 = '';
-    // $scope.fItem21 = '';
-    // $scope.fItem22 = '';
-    // $scope.fItem23 = '';
-    // $scope.fItem24 = '';
-    // $scope.fItem25 = '';
-    // $scope.fItem26 = '';
-    // $scope.fItem27 = '';
-    // $scope.fItem28 = '';
-    // $scope.fItem29 = '';
-    // $scope.fItem30 = '';
-    // $scope.fItem31 = '';
-    // $scope.fItem32 = '';
-    // $scope.fItem33 = '';
-    // $scope.fItem34 = '';
-    // $scope.fItem35 = '';
-    // $scope.fItem36 = '';
-    // $scope.fItem37 = '';
-    // $scope.fItem38 = '';
-    // $scope.fItem39 = '';
-    // $scope.fItem40 = '';
-    // $scope.fItem41 = '';
-    // $scope.fItem42 = '';
-    // $scope.fItem43 = '';
-    // $scope.fItem44 = '';
-    // $scope.fItem45 = '';
-    // $scope.fItem46 = '';
-    // $scope.fItem47 = '';
-    // $scope.fItem48 = '';
-    // $scope.fItem49 = '';
-    // $scope.fItem50 = '';
-
     var uid = firebase.auth().currentUser.uid;
     var dbref = firebase.database().ref().child('users').child(uid).child('info');
     var data1 = $firebaseObject(dbref.child('recipes'));
@@ -198,15 +123,6 @@ app.controller("DashCtrl", function($scope, $firebaseObject, $firebaseArray, $fi
     $scope.name = $scope.data.name;
     $scope.recipeName;
     $scope.fridges = $firebaseObject(dbref.child('fridges'));
-    // $scope.test = function(){
-    //   console.log($scope.recipes);
-    // }
-    // $scope.addIngredient = function(input){
-    //   var ingredient = dbref.child('recipes').child(input).child('ingredients');
-    //   ingredient.update($scope.ingredientNew)
-    //   console.log(ingredient.length);
-    //   return c += 1;
-    // }
     $scope.createRecipe = function(){
       var ingredient = $scope.ingredient;
       var recipeName = $scope.recipeName;
@@ -235,57 +151,6 @@ app.controller("DashCtrl", function($scope, $firebaseObject, $firebaseArray, $fi
       data3[fName] = {name: '', inventory: {}};
       data3[fName].name = $scope.fName;
       data3[fName].inventory[fItem1] = $scope.fItem1;
-        // $scope.fItem2,
-        // $scope.fItem3,
-        // $scope.fItem4,
-        // $scope.fItem5,
-        // $scope.fItem6,
-        // $scope.fItem7,
-        // $scope.fItem8,
-        // $scope.fItem9,
-        // $scope.fItem10,
-        // $scope.fItem11,
-        // $scope.fItem12,
-        // $scope.fItem13,
-        // $scope.fItem14,
-        // $scope.fItem15,
-        // $scope.fItem16,
-        // $scope.fItem17,
-        // $scope.fItem18,
-        // $scope.fItem19,
-        // $scope.fItem20,
-        // $scope.fItem21,
-        // $scope.fItem22,
-        // $scope.fItem23,
-        // $scope.fItem24,
-        // $scope.fItem25,
-        // $scope.fItem26,
-        // $scope.fItem27,
-        // $scope.fItem28,
-        // $scope.fItem29,
-        // $scope.fItem30,
-        // $scope.fItem31,
-        // $scope.fItem32,
-        // $scope.fItem33,
-        // $scope.fItem34,
-        // $scope.fItem35,
-        // $scope.fItem36,
-        // $scope.fItem37,
-        // $scope.fItem38,
-        // $scope.fItem39,
-        // $scope.fItem40,
-        // $scope.fItem41,
-        // $scope.fItem42,
-        // $scope.fItem43,
-        // $scope.fItem44,
-        // $scope.fItem45,
-        // $scope.fItem46,
-        // $scope.fItem47,
-        // $scope.fItem48,
-        // $scope.fItem49,
-        // $scope.fItem50
-
-      //
       data3.$save()
     };
 
@@ -357,6 +222,37 @@ app.controller("DashCtrl", function($scope, $firebaseObject, $firebaseArray, $fi
     lol = $firebaseObject(dbref.child('fridges/' + id + '/inventory/' + newItem));
     lol.$value = newItem;
     lol.$save();
+  }
+  $scope.removeIng = function(id, item){
+    poop = $firebaseObject(dbref.child('recipes/' + id + '/ingredients/' + item));
+    poop.$remove()
+  }
+  $scope.removeItem = function(id, item){
+    butt = $firebaseObject(dbref.child('groceryLists/' + id + '/listItems/' + item));
+    butt.$remove()
+  }
+  $scope.removeInv = function(id, item){
+    lol=$firebaseObject(dbref.child('fridges/' + id + '/inventory/' + item));
+    lol.$remove();
+  }
+  $scope.removeFri = function(id){
+    lol=$firebaseObject(dbref.child('fridges/' + id));
+    lol.$remove();
+  }
+  $scope.descriptor = function(id, newDesc){
+      poop = $firebaseObject(dbref.child('recipes/' + id + '/description'));
+      poop.$value = newDesc;
+      poop.$save();
+
+  }
+
+  $scope.removeRec = function(id){
+    poop = $firebaseObject(dbref.child('recipes/' + id));
+    poop.$remove();
+  }
+  $scope.removeList = function(id){
+    butt = $firebaseObject(dbref.child('groceryLists/' + id));
+    butt.$remove();
   }
   })
 }());
