@@ -6,6 +6,9 @@ const {width, height, scale} = Dimensions.get("window"),
     vmax = Math.max(vw, vh);
 
 export default StyleSheet.create({
+    "body": {
+        "backgroundColor": "#F5F5F5"
+    },
     "textarea": {
         "height": 15 * vh,
         "width": "100%"
@@ -40,7 +43,8 @@ export default StyleSheet.create({
     },
     "card": {
         "height": 45 * vh,
-        "overflowY": "scroll"
+        "overflowY": "scroll",
+        "backgroundColor": "#FAEBD7"
     },
     "form": {
         "paddingTop": 3 * vh

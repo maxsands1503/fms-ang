@@ -1,3 +1,7 @@
+body{
+  background-color: #F5F5F5;
+}
+
 #textarea{
   height: 15vh;
   width: 100%;
@@ -38,4 +42,8 @@ h1.center-align{
 }
 .putty{
   background-color: rgba(248, 248, 255, 0.5);
+}
+
+.card{
+  background-color: #FAEBD7;
 }

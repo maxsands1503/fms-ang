@@ -18,7 +18,7 @@
             </li>
             <button ng-click="fuck=!fuck">Edit</button>
             <div ng-show="fuck">
-              <input type="text" ng-model="editIng" placeholder={{ing}}/>
+              <input type="text" ng-model="editIng" placeholder={{ing}} class="putty"/>
               <button ng-click="editIngredient(recipe.name, ing, editIng); musa = null">Confirm</button>
             </div>
           </ul>
@@ -27,12 +27,12 @@
           {{recipe.description}}<br />
           <button ng-click="showEdit=!showEdit">Edit Instructions</button>
           <div ng-show="showEdit">
-            <textarea id="textarea" ng-model="newD" rows="150" columns="60"></textarea>
+            <textarea id="textarea" ng-model="newD" rows="150" columns="60" class="putty"></textarea>
             <button ng-click="descriptor(recipe.name, newD)">Submit Edits</button>
           </div>
           <button ng-click="showNewIng=!showNewIng">Add Ingredient</button>
           <div ng-show="showNewIng">
-            <input type="text" ng-model="newIng" placeholder="new ingredient" />
+            <input type="text" ng-model="newIng" placeholder="new ingredient" class="putty"/>
             <button ng-click="newIngredient(recipe.name, newIng); newIng = null; showNewIng=!showNewIng">Confirm</button>
           </div>
         </div>
@@ -47,14 +47,14 @@
           <li ng-if="list">{{list}}</li>
           <button ng-click="removeItem(gList.name, list)">Remove</button><button ng-click="editL=!editL">Edit Item</button>
           <div ng-show="editL">
-            <input type="text" ng-model="eLI" placeholder="new item"/>
+            <input type="text" ng-model="eLI" placeholder="new item" class="putty"/>
             <button ng-click="editGItem(gList.name, list, eLI); eLI = null; editL=!editL">Confirm</button>
           </div>
         </ul>
 
         <button ng-click="addListItem=!addListItem">Add to List</button>
         <div ng-show="addListItem">
-          <input type="text" ng-model="nLI" placeholder="new item"/>
+          <input type="text" ng-model="nLI" placeholder="new item" class="putty"/>
           <button ng-click="addItem(gList.name, nLI); nLI = null">Confirm</button>
         </div>
       </div>
@@ -69,13 +69,13 @@
             <li ng-if="item">{{item}}</li>
             <button ng-click="editF=!editF">Edit Item</button>
             <div ng-show="editF">
-              <input type="text" ng-model="eFI" placeholder="new item"/>
+              <input type="text" ng-model="eFI" placeholder="new item" class="putty"/>
               <button ng-click="editFItem(fridge.name, item, eFI); eFI = null; editF=!editF">Confirm</button>
             </div><button ng-click="removeInv(fridge.name, item)">Remove</button>
           </ul>
           <button ng-click="showAddIn=!showAddIn">Add to Fridge</button>
           <div ng-show="showAddIn">
-            <input type="text" ng-model="newInv" placeholder="add to fridge"/>
+            <input type="text" ng-model="newInv" placeholder="add to fridge" class="putty"/>
             <button ng-click="addInven(fridge.name, newInv); newInv = null">Confirm</button>
           </div>
         </div>
@@ -115,9 +115,9 @@
       <div class="card" id="createR">
         <form>
           <label>Create Recipe</label>
-          <input type="text" placeholder="Recipe Name" ng-model="recipeName" />
-          <textarea placeholder="Boil water and add pasta." ng-model="description" id="textarea" rows="100" cols="60"></textarea>
-          <input type="text" placeholder="Ingredient" ng-model="ingredient" />
+          <input type="text" placeholder="Recipe Name" ng-model="recipeName" class="putty"/>
+          <textarea placeholder="Boil water and add pasta." ng-model="description" id="textarea" rows="100" cols="60" class="putty"></textarea>
+          <input type="text" placeholder="Ingredient" ng-model="ingredient" class="putty"/>
           <button ng-click="createRecipe(); recipeName = null; description = null; ingredient = null">Create New Recipe</button>
         </form>
       </div>
@@ -126,8 +126,8 @@
       <div class="card" >
         <form>
           <label>Create Shopping List</label><br />
-          <input type="text" placeholder="List Name" ng-model="gName"/>
-          <input type="text" placeholder="Grocery List Item" ng-model="gItem1"/>
+          <input type="text" placeholder="List Name" ng-model="gName" class="putty"/>
+          <input type="text" placeholder="Grocery List Item" ng-model="gItem1" class="putty"/>
           <button ng-click="createList(); gName = null; gItem1 = null">Create New Shopping List</button>
         </form>
       </div>
@@ -136,8 +136,8 @@
       <div class="card">
         <form>
           <label>In My Fridge</label>
-          <input type="text" placeholder="Fridge" ng-model="fName"/>
-          <input type="text" placeholder="Fridge Item" ng-model="fItem1"/>
+          <input type="text" placeholder="Fridge" ng-model="fName" class="putty"/>
+          <input type="text" placeholder="Fridge Item" ng-model="fItem1" class="putty"/>
           <button ng-click="createFridge(); fName = null; fItem1 = null">Create New Fridge inventory List</button>
         </form>
       </div>
@@ -145,9 +145,9 @@
     <div class="row" ng-show="hideCard4">
         <div class="col s12 m5 l5 card">
           <form id="form">
-            <input type="text" ng-model="searchItem1" />
-            <input type="text" ng-model="searchItem2" />
-            <input type="text" ng-model="searchItem3" />
+            <input type="text" ng-model="searchItem1" class="putty"/>
+            <input type="text" ng-model="searchItem2" class="putty"/>
+            <input type="text" ng-model="searchItem3" class="putty"/>
             <button ng-click="searchRecipes(); preBui=!preBui; searchItem1=null; searchItem2=null; searchItem3=null">Find a recipe</button>
           </form>
         </div>
