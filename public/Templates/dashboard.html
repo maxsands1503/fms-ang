@@ -21,9 +21,10 @@
               <input type="text" ng-model="editIng" placeholder={{ing}}/>
               <button ng-click="editIngredient(recipe.name, ing, editIng); musa = null">Confirm</button>
             </div>
-            <h5>Instructions</h5>
-            {{recipe.description}}
           </ul>
+          <hr />
+          <h5>Instructions</h5>
+          {{recipe.description}}<br />
           <button ng-click="showEdit=!showEdit">Edit Instructions</button>
           <div ng-show="showEdit">
             <textarea id="textarea" ng-model="newD" rows="150" columns="60"></textarea>
