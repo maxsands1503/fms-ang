@@ -22,3 +22,20 @@
 .maxs{
   font-size: .8em;
 }
+
+#area{
+  height: 100vh;
+  width: 100vw;
+}
+#pic{
+  height: 100vh;
+  width: 100vw;
+  z-index: -1;
+  position: absolute;
+}
+h1.center-align{
+  color: #FAEBD7;
+}
+.putty{
+  background-color: rgba(248, 248, 255, 0.5);
+}

@@ -47,5 +47,21 @@ export default StyleSheet.create({
     },
     "maxs": {
         "fontSize": 0.8
+    },
+    "area": {
+        "height": 100 * vh,
+        "width": 100 * vw
+    },
+    "pic": {
+        "height": 100 * vh,
+        "width": 100 * vw,
+        "zIndex": -1,
+        "position": "absolute"
+    },
+    "h1center-align": {
+        "color": "#FAEBD7"
+    },
+    "putty": {
+        "backgroundColor": "rgba(248, 248, 255, 0.5)"
     }
 });

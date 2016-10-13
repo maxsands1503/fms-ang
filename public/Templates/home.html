@@ -1,6 +1,7 @@
 
-    <div ng-controller="AuthCtrl" class="container">
-      <div class="row">
+    <div ng-controller="AuthCtrl" id="area">
+      <img src="../css/image1.jpg" id="pic"/>
+      <div class="container">
         <h1 class="center-align">Welcome to FMS</h1>
         <div class="row center-align">
           <button ng-click="showNew()" ng-hide="!returning"> New User Sign Up</button>
@@ -9,10 +10,10 @@
           <button ng-click="showReturning()" ng-hide="!new"> Login for Returning Users</button>
         </div>
         <div ng-hide="new" class="row center-align">
-          <div class="col s12 m12 l12">
-            Email: <input type="text" ng-model="email">
-            Password: <input type="password" ng-model="password">
-            Name: <input type="text" ng-model="name" />
+          <div class="col s12 m12 l12 putty">
+            Email: <input type="text" ng-model="email" class="putty">
+            Password: <input type="password" ng-model="password" class="putty">
+            Name: <input type="text" ng-model="name" class="putty"/>
             <br><br>
             <button ng-click="createUser()">Create User</button>
             <br><br>
@@ -21,9 +22,9 @@
         </div>
 
         <div ng-hide="returning" class="row center-align">
-          <div class="col s12 m12 l12">
-            Email: <input type="text" ng-model="email">
-            Password: <input type="password" ng-model="password">
+          <div class="col s12 m12 l12 putty">
+            Email: <input type="text" ng-model="email" >
+            Password: <input type="password" ng-model="password" class="putty">
             <button ng-click="signIn()">Sign In</button>
             <p ng-if="error">Error: <strong>{{ error }}</strong></p>
           </div>

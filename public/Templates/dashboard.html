@@ -43,8 +43,14 @@
         <h5>{{gList.name}}</h5>
         <button ng-click="removeList(gList.name)">Delete List</button>
         <ul ng-repeat="list in gList.listItems track by $index">
-          <li ng-if="list">{{list}}</li><button ng-click="removeItem(gList.name, list)">Remove</button>
+          <li ng-if="list">{{list}}</li>
+          <button ng-click="removeItem(gList.name, list)">Remove</button><button ng-click="editL=!editL">Edit Item</button>
+          <div ng-show="editL">
+            <input type="text" ng-model="eLI" placeholder="new item"/>
+            <button ng-click="editGItem(gList.name, list, eLI); eLI = null; editL=!editL">Confirm</button>
+          </div>
         </ul>
+
         <button ng-click="addListItem=!addListItem">Add to List</button>
         <div ng-show="addListItem">
           <input type="text" ng-model="nLI" placeholder="new item"/>
@@ -59,7 +65,12 @@
         <div ng-repeat="fridge in fridges">
           <h5>{{fridge.name}}</h5><button ng-click="removeFri(fridge.name)">Delete Fridge</button>
           <ul ng-repeat="item in fridge.inventory track by $index">
-            <li ng-if="item">{{item}}</li><button ng-click="removeInv(fridge.name, item)">Remove</button>
+            <li ng-if="item">{{item}}</li>
+            <button ng-click="editF=!editF">Edit Item</button>
+            <div ng-show="editF">
+              <input type="text" ng-model="eFI" placeholder="new item"/>
+              <button ng-click="editFItem(fridge.name, item, eFI); eFI = null; editF=!editF">Confirm</button>
+            </div><button ng-click="removeInv(fridge.name, item)">Remove</button>
           </ul>
           <button ng-click="showAddIn=!showAddIn">Add to Fridge</button>
           <div ng-show="showAddIn">
@@ -153,7 +164,7 @@
               <h5>Ingredients</h5>
               <ul ng-repeat="ingred in specific.extendedIngredients track by $index">
                 <li>
-                  {{ingred.name}} {{ingred.unitLong}}
+                  {{ingred.originalString}}
                 </li>
               </ul>
               <a ng-href={{specific.sourceUrl}} target="_blank">Click to see whole recipe</a>

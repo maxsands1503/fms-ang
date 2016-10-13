@@ -201,10 +201,24 @@ app.controller("DashCtrl", function($scope, $firebaseObject, $firebaseArray, $fi
 
     $scope.editIngredient = function(id, item, newItem){
       poop = $firebaseObject(dbref.child('recipes/' + id + '/ingredients/' + item));
-        poop.$value = newItem
-        console.log(poop);
-        poop.$save();
-
+      poop.$remove();
+      newPoop = $firebaseObject(dbref.child('recipes/' + id + '/ingredients/' + newItem));
+        newPoop.$value = newItem
+        newPoop.$save();
+    }
+    $scope.editGItem = function(id, item, newItem){
+      butt = $firebaseObject(dbref.child('groceryLists/' + id + '/listItems/' + item));
+      butt.$remove();
+      newButt = $firebaseObject(dbref.child('groceryLists/' + id + '/listItems/' + newItem));
+        newButt.$value = newItem
+        newButt.$save();
+    }
+    $scope.editFItem= function(id, item, newItem){
+      lol = $firebaseObject(dbref.child('fridges/' + id + '/inventory/' + item));
+      lol.$remove();
+      newLol = $firebaseObject(dbref.child('fridges/' + id + '/inventory/' + newItem));
+        newLol.$value = newItem
+        newLol.$save();
     }
     $scope.newIngredient = function(id, newItem){
       poop = $firebaseObject(dbref.child('recipes/' + id + '/ingredients/' + newItem));
