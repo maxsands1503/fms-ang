@@ -14,16 +14,5 @@
     <p ng-if="error">Error: <strong>{{ error }}</strong></p>
   </div>
 
-  <div ng-show="firebaseUser">
-    <p>Hello, {{ firebaseUser.displayName }}</p>
-    <button ng-click="auth.$signOut()">Sign Out</button>
-  </div>
-
-  <div ng-hide="returning">
-    Email: <input type="text" ng-model="email">
-    Password: <input type="password" ng-model="password">
-    <button ng-click="signIn()">Sign In</button>
-      <p ng-if="firebaseUser">Signed in user: <strong>{{ firebaseUser.uid }}</strong></p>
-      <p ng-if="error">Error: <strong>{{ error }}</strong></p>
-  </div>
+  
 </div>

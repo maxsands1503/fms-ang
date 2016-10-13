@@ -1,80 +1,162 @@
-<div ng-controller="DashCtrl">
-  <h1>Welcome {{data.name}}</h1>
-  <button ng-click="test()">Test</button>
-  <ul ng-repeat="fridge in data.fridges">
-    <li>{{fridge.fridge}}</li>
-  </ul>
-  <form>
-    <label>Create Recipe</label>
-    <input type="text" placeholder="Recipe Name" ng-model="recipeName" />
-    <input type="text" placeholder="Ingredient" ng-model="ingredient" />
-    <input type="text" placeholder="Ingredient" ng-model="ingredient1" />
-    <input type="text" placeholder="Ingredient" ng-model="ingredient2" />
-    <input type="text" placeholder="Ingredient" ng-model="ingredient3" />
-    <input type="text" placeholder="Ingredient" ng-model="ingredient4" />
-    <input type="text" placeholder="Ingredient" ng-model="ingredient5" />
-    <input type="text" placeholder="Ingredient" ng-model="ingredient6" />
-    <input type="text" placeholder="Ingredient" ng-model="ingredient7" />
-    <input type="text" placeholder="Ingredient" ng-model="ingredient8" />
-    <input type="text" placeholder="Ingredient" ng-model="ingredient9" />
-    <input type="text" placeholder="Ingredient" ng-model="ingredient10" />
-    <input type="text" placeholder="Ingredient" ng-model="ingredient11" />
-    <input type="text" placeholder="Ingredient" ng-model="ingredient12" />
-    <input type="text" placeholder="Ingredient" ng-model="ingredient13" />
-    <input type="text" placeholder="Ingredient" ng-model="ingredient14" />
-    <input type="text" placeholder="Ingredient" ng-model="ingredient15" />
-    <input type="text" placeholder="Ingredient" ng-model="ingredient16" />
-    <input type="textarea" placeholder="Description" ng-model="description" />
-    <button ng-click="createRecipe()">Create New Recipe</button>
-  </form>
-  <form>
-     <label>Create Shopping List</label>
-     <input type="text" placeholder="Grocery List Item" ng-model="gName"/>
-     <input type="text" placeholder="Grocery List Item" ng-model="gItem1"/>
-     <input type="text" placeholder="Grocery List Item" ng-model="gItem2"/>
-     <input type="text" placeholder="Grocery List Item" ng-model="gItem3"/>
-     <input type="text" placeholder="Grocery List Item" ng-model="gItem4"/>
-     <input type="text" placeholder="Grocery List Item" ng-model="gItem5"/>
-     <input type="text" placeholder="Grocery List Item" ng-model="gItem6"/>
-     <input type="text" placeholder="Grocery List Item" ng-model="gItem7"/>
-     <input type="text" placeholder="Grocery List Item" ng-model="gItem8"/>
-     <input type="text" placeholder="Grocery List Item" ng-model="gItem9"/>
-     <input type="text" placeholder="Grocery List Item" ng-model="gItem10"/>
-     <input type="text" placeholder="Grocery List Item" ng-model="gItem11"/>
-     <input type="text" placeholder="Grocery List Item" ng-model="gItem12"/>
-     <input type="text" placeholder="Grocery List Item" ng-model="gItem13"/>
-     <input type="text" placeholder="Grocery List Item" ng-model="gItem14"/>
-     <input type="text" placeholder="Grocery List Item" ng-model="gItem15"/>
-     <input type="text" placeholder="Grocery List Item" ng-model="gItem16"/>
-     <input type="text" placeholder="Grocery List Item" ng-model="gItem17"/>
-     <input type="text" placeholder="Grocery List Item" ng-model="gItem18"/>
-     <input type="text" placeholder="Grocery List Item" ng-model="gItem19"/>
-     <input type="text" placeholder="Grocery List Item" ng-model="gItem20"/>
-     <button ng-click="createList()">Create New Shopping List</button>
-  </form>
-  <form>
-     <label>In My Fridge</label>
-     <input type="text" placeholder="Fridge" ng-model="fName"/>
-     <input type="text" placeholder="Fridge Item" ng-model="fItem1"/>
-     <input type="text" placeholder="Fridge Item" ng-model="fItem2"/>
-     <input type="text" placeholder="Fridge Item" ng-model="fItem3"/>
-     <input type="text" placeholder="Fridge Item" ng-model="fItem4"/>
-     <input type="text" placeholder="Fridge Item" ng-model="fItem5"/>
-     <input type="text" placeholder="Fridge Item" ng-model="fItem6"/>
-     <input type="text" placeholder="Fridge Item" ng-model="fItem7"/>
-     <input type="text" placeholder="Fridge Item" ng-model="fItem8"/>
-     <input type="text" placeholder="Fridge Item" ng-model="fItem9"/>
-     <input type="text" placeholder="Fridge Item" ng-model="fItem10"/>
-     <input type="text" placeholder="Fridge Item" ng-model="fItem11"/>
-     <input type="text" placeholder="Fridge Item" ng-model="fItem12"/>
-     <input type="text" placeholder="Fridge Item" ng-model="fItem13"/>
-     <input type="text" placeholder="Fridge Item" ng-model="fItem14"/>
-     <input type="text" placeholder="Fridge Item" ng-model="fItem15"/>
-     <input type="text" placeholder="Fridge Item" ng-model="fItem16"/>
-     <input type="text" placeholder="Fridge Item" ng-model="fItem17"/>
-     <input type="text" placeholder="Fridge Item" ng-model="fItem18"/>
-     <input type="text" placeholder="Fridge Item" ng-model="fItem19"/>
-     <input type="text" placeholder="Fridge Item" ng-model="fItem20"/>
-     <button ng-click="createFridge()">Create New Shopping List</button>
-  </form>
+
+<div ng-controller="DashCtrl" class="container">
+  <h2>Welcome to FMS {{data.name}}</h2>
+  <div class="divider">
+
+  </div>
+  <div class="row section">
+    <div class="col s6 l6 m6 card">
+      <h3>Recipes</h3>
+      <div id="userRecipe">
+        <div ng-repeat="recipe in recipes">
+          <h3>{{recipe.name}}</h3>
+          <ul ng-repeat="ing in recipe.ingredients track by $index">
+            <li ng-if="ing" id="$index">
+              {{ing}} <button ng-click="showEditIngredient=!showEditIngredient">Edit</button>
+            </li>
+
+            <div  ng-show="showEditIngredient" >
+              <input type="text" ng-model="editIng" placeholder={{ing}}/>
+              <button ng-click="editIngredient(recipe.name, ing, editIng); showEditIngredient=!showEditIngredient">Confirm</button>
+            </div>
+          </ul>
+          <p>
+            {{recipe.description}}
+          </p>
+          <button ng-click="showNewIng=!showNewIng">Add Ingredient</button>
+          <div ng-show="showNewIng">
+            <input type="text" ng-model="newIng" placeholder="new ingredient" />
+            <button ng-click="newIngredient(recipe.name, newIng); newIng = null; showNewIng=!showNewIng">Confirm</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col s5 l5 m5 card push-m1 push-l1" id="userGList">
+      <h3>Grocery Lists</h3>
+      <div ng-repeat="gList in gLists">
+        <h5>{{gList.name}}</h5>
+
+        <ul ng-repeat="list in gList.listItems track by $index">
+          <li ng-if="list">{{list}}</li>
+        </ul>
+        <button ng-click="addListItem=!addListItem">Add to List</button>
+        <div ng-show="addListItem">
+          <input type="text" ng-model="nLI" placeholder="new item"/>
+          <button ng-click="addItem(gList.name, nLI); nLI = null">Confirm</button>
+        </div>
+      </div>
+    </div>
+    </div>
+    <div class="row section">
+      <div class="col s12 l6 m6 card" id="userFrid">
+        <h3>Fridge</h3>
+        <div ng-repeat="fridge in fridges">
+          <h5>{{fridge.name}}</h5>
+          <ul ng-repeat="item in fridge.inventory track by $index">
+            <li ng-if="item">{{item}}</li>
+          </ul>
+          <button ng-click="showAddIn=!showAddIn">Add to Fridge</button>
+          <div ng-show="showAddIn">
+            <input type="text" ng-model="newInv" placeholder="add to fridge"/>
+            <button ng-click="addInven(fridge.name, newInv); newInv = null">Confirm</button>
+          </div>
+        </div>
+      </div>
+      <div class="col s12 l5 m5 card push-m1 push-l1" id="sRecipes">
+        <h3>Saved Recipes</h3>
+        <div ng-repeat="save in mySaves">
+          <ul>
+            <li ng-if="save">
+              <a ng-href={{save.url}} target="_blank">{{save.name}}</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+  </div>
+  <div class="row">
+    <div class="col s3 m3 l3">
+      <button ng-click="hideCard1=!hideCard1">Create a Recipe</button>
+    </div>
+    <div class="col s3 m3 l3">
+      <button ng-click="hideCard2=!hideCard2">Create a Grocery List</button>
+    </div>
+    <div class="col s3 m3 l3">
+      <button ng-click="hideCard3=!hideCard3">Create a Fridge Inventory</button>
+    </div>
+    <div class="col s3 m3 l3">
+        <button ng-click="hideCard4=!hideCard4">Search Pre-built Recipes</button>
+    </div>
+  </div>
+
+
+
+
+  <div class="divider"></div>
+
+    <div class="section" id="userStuff" ng-show="hideCard1">
+      <div class="card" id="createR">
+        <form>
+          <label>Create Recipe</label>
+          <input type="text" placeholder="Recipe Name" ng-model="recipeName" />
+          <input type="textarea" placeholder="Boil water and add pasta." ng-model="description" id="textarea"/>
+          <input type="text" placeholder="Ingredient" ng-model="ingredient" />
+          <button ng-click="createRecipe(); recipeName = null; description = null; ingredient = null">Create New Recipe</button>
+        </form>
+      </div>
+    </div>
+    <div class="section" ng-show="hideCard2" id="createS">
+      <div class="card" >
+        <form>
+          <label>Create Shopping List</label><br />
+          <input type="text" placeholder="List Name" ng-model="gName"/>
+          <input type="text" placeholder="Grocery List Item" ng-model="gItem1"/>
+          <button ng-click="createList(); gName = null; gItem1 = null">Create New Shopping List</button>
+        </form>
+      </div>
+    </div>
+    <div class="section" id="createF" ng-show="hideCard3">
+      <div class="card">
+        <form>
+          <label>In My Fridge</label>
+          <input type="text" placeholder="Fridge" ng-model="fName"/>
+          <input type="text" placeholder="Fridge Item" ng-model="fItem1"/>
+          <button ng-click="createFridge(); fName = null; fItem1 = null">Create New Fridge inventory List</button>
+        </form>
+      </div>
+    </div>
+    <div class="row" ng-show="hideCard4">
+        <div class="col s12 m5 l5 card">
+          <form id="form">
+            <input type="text" ng-model="searchItem1" />
+            <input type="text" ng-model="searchItem2" />
+            <input type="text" ng-model="searchItem3" />
+            <button ng-click="searchRecipes(); preBui=!preBui; searchItem1=null; searchItem2=null; searchItem3=null">Find a recipe</button>
+          </form>
+        </div>
+        <div class="col s12 m6 l6 push-m1 push-l1 card" ng-show="preBui">
+          <div ng-repeat="heck in hHeck">
+            <a ng-click="getRecipe(heck.id); heck.id =!heck.id" id={{heck.id}} class="btn-flat btn-medium maxs">{{heck.title}}</a><br />
+            <div ng-show="!heck.id">
+              <h5>{{heck.title}}</h5>
+              <p>
+                {{specific.readyInMinutes}} Minutes to Prepare
+              </p>
+              <p>
+                {{specific.instructions}}
+              </p>
+              <h5>Ingredients</h5>
+              <ul ng-repeat="ingred in specific.extendedIngredients track by $index">
+                <li>
+                  {{ingred.name}} {{ingred.unitLong}}
+                </li>
+              </ul>
+              <a ng-href={{specific.sourceUrl}} target="_blank">Click to see whole recipe</a>
+              <br />
+              <button ng-click="saveRecipe(heck.title, specific.sourceUrl)">Save recipe</button>
+            </div>
+          </div>
+        </div>
+
+
+
 </div>
